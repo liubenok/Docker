@@ -1,9 +1,7 @@
-Thumbor Docker image with MozJPEG
+Thumbor Docker image
 ====
-
-Extend from https://github.com/APSL/docker-thumbor
 
 Example usage
 ----
-`docker run -e DETECTORS="['thumbor.detectors.face_detector','thumbor.detectors.feature_detector']" -p 8000:8000 dictcp/thumbor`
-
+docker build -t 6.6.0 .
+sudo docker run -d -p 80:80 --name container_6.6.0 6.6.0
