@@ -68,6 +68,10 @@ RUN if [ -n "$SIMD_LEVEL" ]; then apt-get install -y -q libjpeg-dev zlib1g-dev; 
 RUN if [ -n "$SIMD_LEVEL" ]; then pip uninstall -y pillow; CC="cc -m$SIMD_LEVEL" LDFLAGS=-L/usr/lib/x86_64-linux-gnu/ pip install --no-cache-dir -U --force-reinstall Pillow-SIMD==5.2.0.post0; fi
 
 COPY docker-entrypoint.sh /
+
+#ENTRYPOINT ["/usr/local/bin/python2 /usr/local/bin/thumbor --port=80"]
+
+#ENTRYPOINT ["chmod", "+x", "/docker-entrypoint.sh"]
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # running thumbor multiprocess via circus by default
